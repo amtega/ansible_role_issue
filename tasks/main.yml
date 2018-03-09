@@ -1,2 +1,9 @@
 ---
 # Role tasks
+
+- block:
+  - name: "Login message /etc/issue"
+    template: src=issue.j2 dest=/etc/issue backup=yes
+  - name: "Login message /etc/issue.net"
+    template: src=issue.net.j2 dest=/etc/issue.net backup=yes
+  become: true

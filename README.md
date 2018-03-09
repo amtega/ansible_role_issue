@@ -1,14 +1,19 @@
 # role_name
 
-A brief description of the role goes here.
+Configure remote and local issue login message.
 
 ## Requirements
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+No pre-requisites.
 
 ## Role Variables
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+~~~ yaml
+issue_message: |
+  \S
+  Kernel \r on an \m (\l)
+issue_net_message: {{ issue_message }}
+~~~
 
 ## Dependencies
 
@@ -44,5 +49,4 @@ GNU General Public License for more details or European Union Public License for
 
 ## Author Information
 
-- author_name 1.
-- author_name N.
+- Daniel Sánchez Fábregas
