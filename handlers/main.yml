@@ -1,13 +1,2 @@
 ---
 # Role handlers
-
-- name: sshd reload
-  service:
-    name: sshd
-    state: reloaded
-  listen:
-    - reload sshd
-  become: true
-  tags:
-    - role::issue
-    - role::issue::service

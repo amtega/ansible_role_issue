@@ -1,6 +1,6 @@
 galaxy_info:
   author: Daniel Sánchez Fábregas
-  description: Configure remote and local issue login message.
+  description: Configure remote and local issue login message
   company: AMTEGA - Xunta de Galicia
 
   # If the issue tracker for your role is not on github, uncomment the
@@ -14,13 +14,13 @@ galaxy_info:
   platforms:
   - name: Fedora
     versions:
-    - 25
-    - 26
-    - 27
-  - name: Centos
+      - 25
+      - 26
+      - 27
+  - name: EL
     versions:
-    - 6
-    - 7
+      - 6
+      - 7
 
   galaxy_tags:
     - issue
@@ -29,4 +29,3 @@ galaxy_info:
     - message
 
 dependencies: []
-

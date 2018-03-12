@@ -1,22 +1,25 @@
 ---
 # Role tasks
 
-- block:
-  - name: Login message /etc/issue
-    template:
-      src: issue.j2
-      dest: /etc/issue
-      backup: yes
-  - name: Login message /etc/issue.net
-    template:
-      src: issue.net.j2
-      dest: /etc/issue.net
-      backup: yes
-  - name: Enable /etc/issue.net in /etc/ssh/sshd_config
-    lineinfile:
-      path: /etc/ssh/sshd_config
-      regexp: '(?i)^banner '
-      line: 'Banner /etc/issue.net'
-      validate: '/usr/sbin/sshd -t -f %s'
-    notify: reload sshd
+- name: Configure issue and issue.net
   become: true
+  block:
+
+    - name: Login message /etc/issue
+      template:
+        src: issue.j2
+        dest: /etc/issue
+        backup: yes
+
+    - name: Login message /etc/issue.net
+      template:
+        src: issue.net.j2
+        dest: /etc/issue.net
+        backup: yes
+        
+    - name: Check /etc/issue.net in /etc/ssh/sshd_config
+      vars:
+          contents: "{{ lookup('file', '/etc/ssh/sshd_config') }}"
+      assert:
+        that:
+          - "'Banner /etc/issue.net' in contents"

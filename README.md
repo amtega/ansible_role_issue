@@ -1,39 +1,59 @@
-# role_name
+# Amtega issue role
 
-Configure remote and local issue login message.
+This is an Ansible role to configure remote and local issue login message.
 
 ## Requirements
 
-No pre-requisites.
+None.
 
 ## Role Variables
 
-~~~ yaml
-issue_message: |
-  \S
-  Kernel \r on an \m (\l)
-issue_net_message: {{ issue_message }}
-~~~
+A list of all the default variables for this role is available in defaults/main.yml.
 
 ## Dependencies
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None.
 
 ## Example Playbook
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+This is an example playbook:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+~~~ yaml
+---
+- name: issue role sample
+  hosts: localhost
+  roles:  
+    - amtega.issue
+  vars:
+    issue_message: |+
+
+      \S
+      Kernel \r on an \m (\l)
+
+
+    issue_net_message: "{{ issue_message }}"
+~~~
 
 ## Testing
 
-A description of how to run tests of the role if available.
+
+Test are based on docker containers. You can run the tests with the following commands:
+
+```shell
+$ cd amtega.issue/tests
+$ ansible-playbook main.yml
+```
+
+If you have docker engine configured you can avoid running dependant 'docker_engine' role (that usually requries root privileges) with the following commands:
+
+```shell
+$ cd amtega.issue/tests
+$ ansible-playbook --skip-tags "role::docker_engine" main.yml
+```
 
 ## License
 
-Copyright (C) <YEAR> AMTEGA - Xunta de Galicia
+Copyright (C) 2018 AMTEGA - Xunta de Galicia
 
 This role is free software: you can redistribute it and/or modify
 it under the terms of:
