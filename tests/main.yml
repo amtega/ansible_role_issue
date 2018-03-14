@@ -7,6 +7,10 @@
     - role: amtega.docker_presets
     - role: amtega.docker_sandbox
       docker_sandbox_state: started
+  tasks:
+    - name: assert that idempotence test was ok
+      assert:
+        that: not docker_sandbox_idempotence_result | failed
 
 - name: test the role amtega.issue
   hosts: docker_sandbox_containers
@@ -29,7 +33,6 @@
       assert:
         that:
           - contents == issue_net_message
-
   tags:
     - idempotence
 
