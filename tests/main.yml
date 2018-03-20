@@ -7,12 +7,8 @@
     - role: amtega.docker_presets
     - role: amtega.docker_sandbox
       docker_sandbox_state: started
-  tasks:
-    - name: assert that idempotence test was ok
-      assert:
-        that: not docker_sandbox_idempotence_result | failed
 
-- name: test the role amtega.issue
+- name: test role amtega.issue
   hosts: docker_sandbox_containers
   roles:
     - amtega.issue
@@ -20,19 +16,25 @@
     issue_message: This is the issue
     issue_net_message: Here is the issue on the net
   tasks:
-    - name: test /etc/issue
-      vars:
-        contents: "{{ lookup('file', '/etc/issue') }}"
-      assert:
-        that:
-          - contents == issue_message
+    - name: read /etc/issue file
+      shell: cat /etc/issue
+      changed_when: false
+      register: read_issue_file_result
+
+    - name: read /etc/issue.net file
+      shell: cat /etc/issue.net
+      changed_when: false
+      register: read_issue_net_file_result
 
     - name: test /etc/issue
-      vars:
-        contents: "{{ lookup('file', '/etc/issue.net') }}"
       assert:
         that:
-          - contents == issue_net_message
+          - read_issue_file_result.stdout == issue_message
+
+    - name: test /etc/issue
+      assert:
+        that:
+          - read_issue_net_file_result.stdout == issue_net_message
   tags:
     - idempotence
 

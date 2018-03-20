@@ -2,7 +2,6 @@
 # Role default lower priority variables
 
 issue_message: |+
-
   \S
   Kernel \r on an \m (\l)
 

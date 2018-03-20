@@ -1,14 +1,14 @@
 # Amtega issue role
 
-This is an Ansible role to configure remote and local issue login message.
+This is an [Ansible](http://www.ansible.com) role to configure remote and local issue login message.
 
 ## Requirements
 
-None.
+[Ansible 2.4+](http://docs.ansible.com/ansible/latest/intro_installation.html)
 
 ## Role Variables
 
-A list of all the default variables for this role is available in defaults/main.yml.
+A list of all the default variables for this role is available in `defaults/main.yml`.
 
 ## Dependencies
 
@@ -36,19 +36,13 @@ This is an example playbook:
 
 ## Testing
 
+Tests are based on docker containers. You can setup docker engine quickly using the playbook `files/setup.yml` available in the role [amtega.docker_engine](https://galaxy.ansible.com/amtega/docker_engine).
 
-Test are based on docker containers. You can run the tests with the following commands:
+Once you have docker, you can run the tests with the following commands:
 
 ```shell
 $ cd amtega.issue/tests
 $ ansible-playbook main.yml
-```
-
-If you have docker engine configured you can avoid running dependant 'docker_engine' role (that usually requries root privileges) with the following commands:
-
-```shell
-$ cd amtega.issue/tests
-$ ansible-playbook --skip-tags "role::docker_engine" main.yml
 ```
 
 ## License

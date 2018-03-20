@@ -1,25 +1,14 @@
 ---
 # Role tasks
 
-- name: Configure issue and issue.net
-  become: true
+- name: configure issue and issue.net
   block:
-
-    - name: Login message /etc/issue
+    - name: configure login message in /etc/issue
       template:
         src: issue.j2
         dest: /etc/issue
-        backup: yes
 
-    - name: Login message /etc/issue.net
+    - name: configure login message in /etc/issue.net
       template:
         src: issue.net.j2
         dest: /etc/issue.net
-        backup: yes
-
-    - name: Check /etc/issue.net in /etc/ssh/sshd_config
-      vars:
-          contents: "{{ lookup('file', '/etc/ssh/sshd_config') }}"
-      assert:
-        that:
-          - "'Banner /etc/issue.net' in contents"
