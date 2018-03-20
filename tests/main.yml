@@ -1,2 +1,43 @@
 ---
-# Tasks for testing role
+# Tasks for tesing role
+
+- name: run idempotence test
+  hosts: localhost
+  roles:
+    - role: amtega.docker_presets
+    - role: amtega.docker_sandbox
+      docker_sandbox_state: started
+  tasks:
+    - name: assert that idempotence test was ok
+      assert:
+        that: not docker_sandbox_idempotence_result | failed
+
+- name: test the role amtega.issue
+  hosts: docker_sandbox_containers
+  roles:
+    - amtega.issue
+  vars:
+    issue_message: This is the issue
+    issue_net_message: Here is the issue on the net
+  tasks:
+    - name: test /etc/issue
+      vars:
+        contents: "{{ lookup('file', '/etc/issue') }}"
+      assert:
+        that:
+          - contents == issue_message
+
+    - name: test /etc/issue
+      vars:
+        contents: "{{ lookup('file', '/etc/issue.net') }}"
+      assert:
+        that:
+          - contents == issue_net_message
+  tags:
+    - idempotence
+
+- name: cleanup docker docker sandbox
+  hosts: localhost
+  roles:
+    - role: amtega.docker_sandbox
+      docker_sandbox_state: absent

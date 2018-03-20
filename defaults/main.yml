@@ -1,2 +1,10 @@
 ---
 # Role default lower priority variables
+
+issue_message: |+
+
+  \S
+  Kernel \r on an \m (\l)
+
+
+issue_net_message: "{{ issue_message }}"
