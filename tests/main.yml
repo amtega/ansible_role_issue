@@ -18,10 +18,12 @@
   tasks:
     - name: read /etc/issue file
       shell: cat /etc/issue
+      changed_when: false
       register: read_issue_file_result
 
     - name: read /etc/issue.net file
       shell: cat /etc/issue.net
+      changed_when: false
       register: read_issue_net_file_result
 
     - name: test /etc/issue
