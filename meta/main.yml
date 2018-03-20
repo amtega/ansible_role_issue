@@ -1,16 +1,11 @@
+---
+
 galaxy_info:
   author: Daniel Sánchez Fábregas
   description: Configure remote and local issue login message
   company: AMTEGA - Xunta de Galicia
-
-  # If the issue tracker for your role is not on github, uncomment the
-  # next line and provide a value
-  # issue_tracker_url: http://example.com/issue/tracker
-
   license: GPLv3 or EUPL
-
   min_ansible_version: 2.4
-
   platforms:
   - name: Fedora
     versions:
@@ -20,7 +15,6 @@ galaxy_info:
     versions:
       - 6
       - 7
-
   galaxy_tags:
     - issue
     - issue.net
