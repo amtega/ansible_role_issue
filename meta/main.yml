@@ -1,6 +1,7 @@
 ---
 
 galaxy_info:
+  role_name: issue
   author: Daniel Sánchez Fábregas
   description: Configure remote and local issue login message
   company: AMTEGA - Xunta de Galicia
