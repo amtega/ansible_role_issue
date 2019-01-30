@@ -2,7 +2,7 @@
 
 galaxy_info:
   role_name: issue
-  author: Daniel Sánchez Fábregas
+  author: Daniel Sánchez Fábregas / Juan Antonio Valiño García
   description: Configure remote and local issue login message
   company: AMTEGA - Xunta de Galicia
   license: GPLv3 or EUPL
@@ -22,7 +22,6 @@ galaxy_info:
 
   galaxy_tags:
     - issue
-    - issue.net
     - login
     - message
 
