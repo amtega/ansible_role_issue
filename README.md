@@ -57,3 +57,4 @@ This role is distributed in the hope that it will be useful, but WITHOUT ANY WAR
 ## Author Information
 
 - Daniel Sánchez Fábregas
+- Juan Antonio Valiño García

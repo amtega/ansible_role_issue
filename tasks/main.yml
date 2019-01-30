@@ -12,3 +12,5 @@
       template:
         src: issue.net.j2
         dest: /etc/issue.net
+  tags:
+    - role::issue
