@@ -6,20 +6,16 @@ galaxy_info:
   description: Configure remote and local issue login message
   company: AMTEGA - Xunta de Galicia
   license: GPLv3 or EUPL
-  min_ansible_version: 2.7
+  min_ansible_version: 2.9
   platforms:
-    - name: Debian
-      versions:
-        - stretch
     - name: EL
       versions:
         - 6
         - 7
     - name: Fedora
       versions:
-        - 27
-        - 28
-
+        - 29
+        - 39
   galaxy_tags:
     - issue
     - login
@@ -29,6 +25,5 @@ dependencies:
   - role: amtega.check_platform
     check_platform_distributions:
       centos: 6
-      debian: 9
-      fedora: 27
+      fedora: 29
       rhel: 6
