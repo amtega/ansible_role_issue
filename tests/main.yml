@@ -21,7 +21,7 @@
   tags:
     - sandbox
 
-- name: test role amtega.issue
+- name: Test role amtega.issue
   hosts: docker_sandbox_containers
   roles:
     - amtega.issue
@@ -29,22 +29,22 @@
     issue_message: This is the issue
     issue_net_message: Here is the issue on the net
   tasks:
-    - name: read /etc/issue file
+    - name: Read /etc/issue file
       shell: cat /etc/issue
       changed_when: false
       register: read_issue_file_result
 
-    - name: read /etc/issue.net file
+    - name: Read /etc/issue.net file
       shell: cat /etc/issue.net
       changed_when: false
       register: read_issue_net_file_result
 
-    - name: test /etc/issue
+    - name: Test /etc/issue
       assert:
         that:
           - read_issue_file_result.stdout == issue_message
 
-    - name: test /etc/issue
+    - name: Test /etc/issue
       assert:
         that:
           - read_issue_net_file_result.stdout == issue_net_message
