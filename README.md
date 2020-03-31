@@ -20,8 +20,7 @@ This is an example playbook:
 
 ~~~ yaml
 ---
-- name: issue role sample
-  hosts: localhost
+- hosts: localhost
   roles:  
     - amtega.issue
   vars:
