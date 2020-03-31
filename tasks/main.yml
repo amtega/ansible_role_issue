@@ -1,14 +1,14 @@
 ---
 # Role tasks
 
-- name: configure issue and issue.net
+- name: Configure issue and issue.net
   block:
-    - name: configure login message in /etc/issue
+    - name: Configure login message in /etc/issue
       template:
         src: issue.j2
         dest: /etc/issue
 
-    - name: configure login message in /etc/issue.net
+    - name: Configure login message in /etc/issue.net
       template:
         src: issue.net.j2
         dest: /etc/issue.net
