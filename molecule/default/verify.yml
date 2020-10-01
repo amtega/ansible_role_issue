@@ -1,0 +1,29 @@
+- name: Verify
+  hosts: molecule_hosts
+
+  tasks:
+    # - name: "Include amtega.issue"
+    #   include_role:
+    #     name: "amtega.issue"
+    #   vars:
+    #     issue_message: This is the issue
+    #     issue_net_message: Here is the issue on the net
+    - name: Read /etc/issue file
+      shell: cat /etc/issue
+      changed_when: false
+      register: read_issue_file_result
+
+    - name: Read /etc/issue.net file
+      shell: cat /etc/issue.net
+      changed_when: false
+      register: read_issue_net_file_result
+
+    - name: Test /etc/issue
+      assert:
+        that:
+          - read_issue_file_result.stdout == issue_message
+
+    - name: Test /etc/issue
+      assert:
+        that:
+          - read_issue_net_file_result.stdout == issue_net_message
