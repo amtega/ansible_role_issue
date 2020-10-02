@@ -27,28 +27,47 @@ lint: |
   ansible-lint
   flake8
 platforms:
-  # - name: "centos7-${INSTANCE_UUID:-1}"
-  #   box: centos/7
+  - name: "centos6-${INSTANCE_UUID:-1}"
+    image: centos:6
+    groups:
+      - molecule_hosts
+      - molecule_hosts_centos
+      - molecule_hosts_centos_6
   - name: "centos7-${INSTANCE_UUID:-1}"
     image: centos:7
     groups:
       - molecule_hosts
+      - molecule_hosts_centos
+      - molecule_hosts_centos_7
+  - name: "centos8-${INSTANCE_UUID:-1}"
+    image: centos:8
+    groups:
+      - molecule_hosts
+      - molecule_hosts_centos
+      - molecule_hosts_centos_8
+  - name: "fedora29-${INSTANCE_UUID:-1}"
+    image: fedora:29
+    groups:
+      - molecule_hosts
+      - molecule_hosts_fedora
+      - molecule_hosts_fedora_29
+  - name: "fedora30-${INSTANCE_UUID:-1}"
+    image: fedora:30
+    groups:
+      - molecule_hosts
+      - molecule_hosts_fedora
+      - molecule_hosts_fedora_30
 provisioner:
   name: ansible
-#  config_options:
-#      defaults:
-#        callback_whitelist: profile_tasks
-#        action_plugins: PWD/action_plugins
+  config_options:
+    defaults:
+      callback_whitelist: profile_tasks
+      action_plugins: PWD/action_plugins
   inventory:
     hosts:
       molecule_hosts:
-        # vars:
-          # check_platform_distributions:
-          #   centos: 7
-          #   #debian: 9
-          #   redhat: 6
-          #   fedora: 30
-          # check_platform_variables:
-          #   - check_platform_distributions
+        vars:
+          issue_message: This is the issue
+          issue_net_message: Here is the issue on the net
 verifier:
   name: ansible
