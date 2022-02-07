@@ -6,12 +6,12 @@
   tasks:
     - name: Read /etc/issue file
       command: cat /etc/issue
-      changed_when: false
+      changed_when: no
       register: read_issue_file_result
 
     - name: Read /etc/issue.net file
       command: cat /etc/issue.net
-      changed_when: false
+      changed_when: no
       register: read_issue_net_file_result
 
     - name: Test /etc/issue
