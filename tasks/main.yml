@@ -7,10 +7,12 @@
       template:
         src: issue.j2
         dest: /etc/issue
+        mode: 0644
 
     - name: Configure login message in /etc/issue.net
       template:
         src: issue.net.j2
         dest: /etc/issue.net
+        mode: 0644
   tags:
     - role::issue
