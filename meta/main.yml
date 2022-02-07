@@ -2,20 +2,22 @@
 
 galaxy_info:
   role_name: issue
+  namespace: amtega
   author: Daniel Sánchez Fábregas / Juan Antonio Valiño García
   description: Configure remote and local issue login message
   company: AMTEGA - Xunta de Galicia
   license: GPLv3 or EUPL
-  min_ansible_version: 2.9
+  min_ansible_version: 2.10
   platforms:
     - name: EL
       versions:
         - 6
         - 7
+        - 8
     - name: Fedora
       versions:
-        - 29
-        - 30
+        - 34
+        - 35
   galaxy_tags:
     - issue
     - login
@@ -25,5 +27,5 @@ dependencies:
   - role: amtega.check_platform
     check_platform_distributions:
       centos: 6
-      fedora: 29
+      fedora: 34
       redhat: 6
