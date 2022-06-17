@@ -5,21 +5,21 @@
   gather_facts: no
   tasks:
     - name: Read /etc/issue file
-      command: cat /etc/issue
+      ansible.builtin.command: cat /etc/issue
       changed_when: no
       register: read_issue_file_result
 
     - name: Read /etc/issue.net file
-      command: cat /etc/issue.net
+      ansible.builtin.command: cat /etc/issue.net
       changed_when: no
       register: read_issue_net_file_result
 
     - name: Test /etc/issue
-      assert:
+      ansible.builtin.assert:
         that:
           - read_issue_file_result.stdout == issue_message
 
     - name: Test /etc/issue
-      assert:
+      ansible.builtin.assert:
         that:
           - read_issue_net_file_result.stdout == issue_net_message

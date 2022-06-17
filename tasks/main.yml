@@ -4,13 +4,13 @@
 - name: Configure issue and issue.net
   block:
     - name: Configure login message in /etc/issue
-      template:
+      ansible.builtin.template:
         src: issue.j2
         dest: /etc/issue
         mode: 0644
 
     - name: Configure login message in /etc/issue.net
-      template:
+      ansible.builtin.template:
         src: issue.net.j2
         dest: /etc/issue.net
         mode: 0644
